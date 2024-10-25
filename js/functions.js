@@ -1,22 +1,19 @@
-function checkStringLength(str, maxLength) {
-  return str.length <= maxLength;
+function isMeetingValid(startTime, endTime, meetingStart, meetingDuration) {
+  const timeToMinutes = (time) => {
+    const [hours, minutes] = time.split(':').map(Number);
+    return hours * 60 + minutes;
+  };
+
+  const workStart = timeToMinutes(startTime);
+  const workEnd = timeToMinutes(endTime);
+  const meetingStartTime = timeToMinutes(meetingStart);
+  const meetingEndTime = meetingStartTime + meetingDuration;
+
+  return meetingStartTime >= workStart && meetingEndTime <= workEnd;
 }
 
-checkStringLength('проверяемая строка', 20);
-checkStringLength('проверяемая строка', 18);
-checkStringLength('проверяемая строка', 10);
-
-
-function isPalindrome(str) {
-  str = str.replace(/\s/g, '').toLowerCase();
-  for (let i = 0; i < Math.floor(str.length / 2); i++) {
-    if (str[i] !== str[str.length - 1 - i]) {
-      return false;
-    }
-  }
-  return true;
-}
-
-isPalindrome('топот');
-isPalindrome('ДовОд');
-isPalindrome('Кекс');
+isMeetingValid('08:00', '17:30', '14:00', 90);
+isMeetingValid('8:0', '10:0', '8:0', 120);
+isMeetingValid('08:00', '14:30', '14:00', 90);
+isMeetingValid('14:00', '17:30', '08:0', 90);
+isMeetingValid('8:00', '17:30', '08:00', 900);
