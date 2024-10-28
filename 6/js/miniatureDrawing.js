@@ -1,36 +1,26 @@
-function generateImageElement(photo) {
-  const imageContainer = document.createElement('div');
-  imageContainer.className = 'picture';
+import {generatePhoto} from './data.js';
 
-  const img = document.createElement('img');
-  img.src = photo.url;
-  img.alt = photo.description;
+const container = document.querySelector('.pictures');
+const template = document.querySelector('#picture').content.querySelector('.picture');
+const fragment = document.createDocumentFragment();
 
-  const likesSpan = document.createElement('span');
-  likesSpan.className = 'picture__likes';
-  likesSpan.textContent = photo.likes;
-
-  const commentsSpan = document.createElement('span');
-  commentsSpan.className = 'picture__comments';
-  commentsSpan.textContent = photo.comments.length;
-
-  imageContainer.appendChild(img);
-  imageContainer.appendChild(document.createTextNode(photo.description));
-  imageContainer.appendChild(likesSpan);
-  imageContainer.appendChild(commentsSpan);
-
-  return imageContainer;
-}
-
-function renderPhotos(photos) {
-  const fragment = document.createDocumentFragment();
-  const picturesElement = document.querySelector('.pictures');
-
-  photos.forEach((photo) => {
-    const imageElement = generateImageElement(photo);
-    fragment.appendChild(imageElement);
+const createUserPhoto = (picture) => {
+  const element = template.cloneNode(true);
+  element.querySelector('.picture__img').src = picture.url;
+  element.querySelector('.picture__likes').textContent = picture.likes;
+  element.querySelector('.picture__comments').textContent = picture.comments.length;
+  element.addEventListener('click', () => {
+    generatePhoto(picture);
   });
+  fragment.appendChild(element);
+};
 
-  picturesElement.appendChild(fragment);
-}
-renderPhotos();
+// здесь создаются все 25
+const renderUserPhotos = (pictures) => {
+  pictures.forEach((picture) => {
+    createUserPhoto(picture);
+  });
+  return container.appendChild(fragment);
+};
+
+export {renderUserPhotos};
