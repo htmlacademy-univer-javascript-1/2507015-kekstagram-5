@@ -1,26 +1,15 @@
-import {generatePhoto} from './data.js';
+export function renderPhotos(photos) {
+  const picturesContainer = document.querySelector('.pictures');
+  const fragment = document.createDocumentFragment();
 
-const container = document.querySelector('.pictures');
-const template = document.querySelector('#picture').content.querySelector('.picture');
-const fragment = document.createDocumentFragment();
-
-const createUserPhoto = (picture) => {
-  const element = template.cloneNode(true);
-  element.querySelector('.picture__img').src = picture.url;
-  element.querySelector('.picture__likes').textContent = picture.likes;
-  element.querySelector('.picture__comments').textContent = picture.comments.length;
-  element.addEventListener('click', () => {
-    generatePhoto(picture);
+  photos.forEach((photo) => {
+    const pictureTemplate = document.querySelector('#picture').content;
+    const pictureElement = pictureTemplate.cloneNode(true);
+    pictureElement.querySelector('.picture__img').src = photo.url;
+    pictureElement.querySelector('.picture__img').alt = photo.description;
+    pictureElement.querySelector('.picture__likes').textContent = photo.likes;
+    pictureElement.querySelector('.picture__comments').textContent = photo.comments.length;
+    fragment.appendChild(pictureElement);
   });
-  fragment.appendChild(element);
-};
-
-// здесь создаются все 25
-const renderUserPhotos = (pictures) => {
-  pictures.forEach((picture) => {
-    createUserPhoto(picture);
-  });
-  return container.appendChild(fragment);
-};
-
-export {renderUserPhotos};
+  picturesContainer.appendChild(fragment);
+}
