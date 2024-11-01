@@ -17,8 +17,8 @@ const createPictureElement = ({ comments, description, likes, url }) => {
 const renderPictures = (pictures) => {
   const fragment = document.createDocumentFragment();
   pictures.forEach((picture) => {
-    const pictureItem = createPictureElement(picture);
-    fragment.append(pictureItem);
+    const pictureElement = createPictureElement(picture);
+    fragment.append(pictureElement);
   });
 
   picturesBox.append(fragment);
