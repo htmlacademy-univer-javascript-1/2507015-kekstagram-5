@@ -16,4 +16,3 @@ export const createIdGenerator = () => {
     return lastGeneratedId;
   };
 };
-

@@ -7,7 +7,7 @@ const createPictureElement = ({ comments, description, likes, url }) => {
 
   pictureElement.querySelector('.picture__img').src = url;
   pictureElement.querySelector('.picture__img').alt = description;
-  pictureElement.querySelector('.pictur__comments').textContent = comments.length;
+  pictureElement.querySelector('.picture__comments').textContent = comments.length;
   pictureElement.querySelector('.picture__likes').textContent = likes;
 
   return pictureElement;
@@ -17,8 +17,8 @@ const createPictureElement = ({ comments, description, likes, url }) => {
 const renderPictures = (pictures) => {
   const fragment = document.createDocumentFragment();
   pictures.forEach((picture) => {
-    const pictureElement = createPictureElement(picture);
-    fragment.append(pictureElement);
+    const pictureItem = createPictureElement(picture);
+    fragment.append(pictureItem);
   });
 
   picturesBox.append(fragment);
