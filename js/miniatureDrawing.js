@@ -9,7 +9,7 @@ const createPictureElement = ({ comments, description, likes, url, id }) => {
   pictureElement.querySelector('.picture__img').alt = description;
   pictureElement.querySelector('.picture__comments').textContent = comments.length;
   pictureElement.querySelector('.picture__likes').textContent = likes;
-  pictureElement.daraset.pictureId = id;
+  pictureElement.dataset.pictureId = id;
 
   return pictureElement;
 };
