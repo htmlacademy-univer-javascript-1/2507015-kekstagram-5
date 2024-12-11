@@ -1,4 +1,4 @@
-import {isEscapeKey} from './util.js';
+/*import {isEscapeKey} from './util.js';
 
 const COMMENTS_STEP = 5;
 
@@ -96,3 +96,4 @@ const showBigPicture = (data) => {
 canselButtonElement.addEventListener('click', onCanselbuttonClick);
 
 export { showBigPicture };
+*/
