@@ -27,12 +27,12 @@ const showModal = () => {
 
 const hideModal = () => {
   form.reset();
+  resetScale();
+  reset();
   pristine.reset();
   overlay.classList.add('hidden');
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', onDocumentKeydown);
-  resetScale();
-  reset();
 };
 
 const normalizeTags = (tagString) => tagString.trim().split(' ').filter((tag) => Boolean(tag.length));
