@@ -1,6 +1,6 @@
 import { isEscapeKey } from './util.js';
 import { resetScale } from './size.js';
-import { init, reset } from './effect.js';
+import { init, reset } from './effects.js';
 
 const MAX_HASHTAG_COUNT = 5;
 const VALID_SYMBOLS = /^#[a-zа-яё0-9]{1,19}$/i;
@@ -84,6 +84,7 @@ pristine.addValidator(
 form.querySelector('.img-upload__input').addEventListener('change', onFileInputChange);
 form.querySelector('.img-upload__cancel').addEventListener('click', onCancelButtonClick);
 init();
+
 const setOnFormSubmit = (callback) => {
   form.addEventListener('submit', async (evt) => {
     evt.preventDefault();
