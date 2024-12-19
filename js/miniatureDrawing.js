@@ -14,7 +14,7 @@ const createPicturesElement = ({url, description, likes, comments, id}) => {
   return showPictures;
 };
 
-const renderPictuers = (pictures) => {
+const renderPictures = (pictures) => {
   container.querySelectorAll('.picture').forEach((element) => element.remove());
   const similarListFragment = document.createDocumentFragment();
   pictures.forEach((picture) => {
@@ -24,4 +24,4 @@ const renderPictuers = (pictures) => {
   container.append(similarListFragment);
 };
 
-export { renderPictuers };
+export { renderPictures };
