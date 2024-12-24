@@ -65,9 +65,11 @@ const hideBigPicture = () => {
 };
 
 function onDocumentKeydown(evt) {
-  if (isEscapeKey) {
-    evt.preventDefault();
+  evt.preventDefault();
+  if (isEscapeKey(evt)) {
     hideBigPicture();
+    document.removeEventListener('keydown', onDocumentKeydown);
+    commentsLoaderElement.removeEventListener('click', onLoadCommentsButtonClick);
   }
 }
 
