@@ -55,7 +55,6 @@ const onLoadCommentsButtonClick = () => {
   renderComments();
 };
 
-
 const hideBigPicture = () => {
   bigPictureElement.classList.add('hidden');
   bodyElement.classList.remove('modal-open');
