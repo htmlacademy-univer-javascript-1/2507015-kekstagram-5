@@ -1,4 +1,4 @@
-import { renderGallery } from './fullPhoto.js';
+import { renderGallery } from './full-photo.js';
 import { showSuccessMessage, showErrorMessage } from './data.js';
 import { hideModal, setOnFormSubmit } from './form.js';
 import { getData, sendData } from './fetch.js';
